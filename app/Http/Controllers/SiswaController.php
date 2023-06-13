@@ -58,8 +58,7 @@ class SiswaController extends Controller
 
     public function exportExcel()
     {
-        $nama_file = 'laporan_data_siswa_' . date('Y-m-d_H-i-s') . '.xlsx';
-        return Excel::download(new SiswaExport, $nama_file);
+        return Excel::download(new SiswaExport, 'DataSiswa.xlsx');
     }
 
     public function pdf()
