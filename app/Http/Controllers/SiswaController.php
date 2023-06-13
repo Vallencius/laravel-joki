@@ -68,11 +68,15 @@ class SiswaController extends Controller
     }
     public function exportPdf()
     {
-        $data_siswa = Siswa::all();
-        $pdf = PDF::loadView('siswa.pdf', ['data_siswa' => $data_siswa]);
-        // gunanya untuk tidak mendownload
-        // return $pdf->download('laporan_data_siswa_' . date('Y-m-d_H-i-s') . '.pdf');
-        return $pdf->stream();
+	    $items = Siswa::get();
+
+	    $data = [
+            'title' => 'Data Siswa',
+            'items' => $items
+	    ];
+
+        $pdf = PDF::loadView('siswa.excel', $data);
+        return $pdf->download('DataSiswa.pdf');
 
     }
 }
