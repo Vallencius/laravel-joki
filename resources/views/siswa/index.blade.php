@@ -54,6 +54,7 @@
                         @enderror
                         <a href="/siswa/export-excel" class="btn btn-success btn-sm" target="_blank">Excel</a>
                         <a href="/siswa/export-pdf" class="btn btn-danger btn-sm" target="_blank">PDF</a>
+                        <a href="/siswa/charts" class="btn btn-info btn-sm" target="_blank">Chart</a>
                         <table class="table table-hover">
                             <thead>
                                 <tr>

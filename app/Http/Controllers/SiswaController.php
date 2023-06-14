@@ -7,6 +7,7 @@ use App\Exports\SiswaExport;
 use Excel;
 use App\Siswa;
 use PDF;
+use Illuminate\Support\Facades\DB;
 
 class SiswaController extends Controller
 {
@@ -94,5 +95,10 @@ class SiswaController extends Controller
         $pdf = PDF::loadView('siswa.excel', $data);
         return $pdf->download('DataSiswa.pdf');
 
+    }
+    public function charts() {
+        $orders = Siswa::select("jenis_kelamin", DB::raw('count(*) as total'))
+                        ->groupBy('jenis_kelamin')->get();
+        return view('siswa.chart',['orders' => $orders, 'count' => 7]); 
     }
 }

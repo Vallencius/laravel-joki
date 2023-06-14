@@ -23,27 +23,51 @@
 	<link rel="apple-touch-icon" sizes="76x76" href="{{asset('admin/assets/img/appleicon.png')}}">
 	<link rel="icon" type="image/png" sizes="96x96" href="{{asset('admin/assets/img/favicon.png')}}">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	@yield('script')
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 <body>
-	<!-- WRAPPER -->
-	<div id="wrapper">
-		<!-- NAVBAR -->
-		@include('layouts.includes._navbar')
-		<!-- END NAVBAR -->
-		<!-- LEFT SIDEBAR -->
-		@include('layouts.includes._sidebar')
-		<!-- END LEFT SIDEBAR -->
-		<!-- MAIN -->
-		@yield('content')
-		<!-- END MAIN -->
-		<div class="clearfix"></div>
-		<footer>
-			<div class="container-fluid">
-				<p class="copyright">Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a></p>
-			</div>
-		</footer>
-	</div>
+    <a href="/siswa" class="btn btn-info btn-lg">Back</a>
+    <h2 style="text-align: center;">Chart Jenis Kelamin Siswa</h2>
+    <div class="container-fluid p-5">
+        <div id="barchart_material" style="width: 100%; height: 500px;"></div>
+    </div>
+    <div class="clearfix"></div>
+    <footer>
+        <div class="container-fluid">
+            <p class="copyright">Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a></p>
+        </div>
+    </footer>
+
+    <script type="text/javascript">
+
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Jenis Kelamin', 'Jumlah'],
+
+            ['{{ $orders[0]->jenis_kelamin }}', {{ $orders[0]->total }}],
+            ['{{ $orders[1]->jenis_kelamin }}', {{ $orders[1]->total }}],
+        ]);
+
+        var options = {
+          chart: {
+          },
+          bars: 'vertical'
+        };
+        var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
 	<!-- END WRAPPER -->
 	<!-- Javascript -->
 	<script src="{{asset('admin/assets/vendor/bootstrap/js/bootstrap.min.js')}}"></script>

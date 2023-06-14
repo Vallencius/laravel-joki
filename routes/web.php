@@ -32,4 +32,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/siswa/export-excel', 'SiswaController@exportExcel');
     Route::get('/siswa/export-pdf', 'SiswaController@exportPdf');
     Route::get('/siswa/pdf', 'SiswaController@pdf');
+    Route::get('/siswa/charts', 'SiswaController@charts');
 });
