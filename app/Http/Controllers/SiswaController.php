@@ -17,14 +17,22 @@ class SiswaController extends Controller
     }
     public function create(Request $request)
     {
-        $data = $request->all();
+        $data = $request->validate([
+            'nama_depan' => 'required',
+            'nama_belakang' => 'required',
+            'email' => 'required',
+            'no_telp' => 'required',
+            'jenis_kelamin' => 'required',
+            'agama' => 'required',
+            'alamat' => 'required',
+        ]);
         $check = Siswa::create($data);
         if (!$check) {
-            $arr = array('msg' => 'Gagal simpan dengan Ajax', 'status' => false);
+            $msg = 'Gagal simpan siswa baru';
         } else {
-            $arr = array('msg' => 'Sukses simpan dengan Ajax', 'status' => true);
+            $msg = 'Sukses simpan siswa baru';
         }
-        return Response()->json($arr);
+        return redirect('/siswa')->with('sukses', $msg);
     }
     public function edit($id)
     {
@@ -34,7 +42,15 @@ class SiswaController extends Controller
     public function update(Request $request, $id)
     {
         $siswa = Siswa::find($id);
-        $siswa->update($request->all());
+        $siswa->update($request->validate([
+            'nama_depan' => 'required',
+            'nama_belakang' => 'required',
+            'email' => 'required',
+            'no_telp' => 'required',
+            'jenis_kelamin' => 'required',
+            'agama' => 'required',
+            'alamat' => 'required',
+        ]));
         if ($request->hasFile('foto')) {
             $fotoreq = rand() . $request->file('foto')->getClientOriginalName();
             $request->file('foto')->move('uploads/foto/', $fotoreq);

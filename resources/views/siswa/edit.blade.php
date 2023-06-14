@@ -27,6 +27,16 @@
                                 <input type="text" class="form-control" name="nama_belakang" id="nama_belakang" aria-describedby="nama_belakang" placeholder="Nama Belakang" value="{{$siswa->nama_belakang}}">
                             </div>
                             <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="text" class="form-control" name="email" id="email" ariadescribedby="email" placeholder="Email">
+                                <span class="text-danger">{{ $errors->first('email') }}</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="no_telp">No Telp</label>
+                                <input type="text" class="form-control" name="no_telp" id="no_telp" aria-describedby="no_telp" placeholder="Nomor Telepon">
+                                <span class="text-danger">{{ $errors->first('no_telp') }}</span>
+                            </div>
+                            <div class="form-group">
                                 <label for="jenis_kelamin">Pilih Jenis Kelamin</label>
                                 <select class="form-control" name="jenis_kelamin" id="jenis_kelamin">
                                     <option value="L" @if ($siswa->jenis_kelamin == "L") selected @endif>Laki-laki</option>

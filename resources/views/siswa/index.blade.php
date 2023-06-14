@@ -17,6 +17,41 @@
                             {{session('sukses')}}
                         </div>
                         @endif
+                        @error('nama_depan')
+                            <div class="alert alert-danger">
+                            {{ $message }}
+                            </div>
+                        @enderror
+                        @error('nama_belakang')
+                            <div class="alert alert-danger">
+                            {{ $message }}
+                            </div>
+                        @enderror
+                        @error('email')
+                            <div class="alert alert-danger">
+                            {{ $message }}
+                            </div>
+                        @enderror
+                        @error('no_telp')
+                            <div class="alert alert-danger">
+                            {{ $message }}
+                            </div>
+                        @enderror
+                        @error('jenis_kelamin')
+                            <div class="alert alert-danger">
+                            {{ $message }}
+                            </div>
+                        @enderror
+                        @error('agama')
+                            <div class="alert alert-danger">
+                            {{ $message }}
+                            </div>
+                        @enderror
+                        @error('alamat')
+                            <div class="alert alert-danger">
+                            {{ $message }}
+                            </div>
+                        @enderror
                         <a href="/siswa/export-excel" class="btn btn-success btn-sm" target="_blank">Excel</a>
                         <a href="/siswa/export-pdf" class="btn btn-danger btn-sm" target="_blank">PDF</a>
                         <table class="table table-hover">
@@ -63,7 +98,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form id="siswa_form" method="POST" action="javascript:void(0)">
+                                <form id="siswa_form" method="POST" action="/siswa/buat">
                                     {{csrf_field()}}
                                     <div class="form-group">
                                         <label for="nama_depan">Nama Depan</label>
