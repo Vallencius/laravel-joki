@@ -52,6 +52,10 @@
                                 <textarea class="form-control" name="alamat" id="alamat" rows="3">{{$siswa->alamat}}</textarea>
                             </div>
                             <div class="form-group">
+                                <label for="angkatan">Angkatan</label>
+                                <input type="text" class="form-control" name="angkatan" id="angkatan" aria-describedby="nama_depan" placeholder="Angkatan" value="{{$siswa->angkatan}}">
+                            </div>    
+                            <div class="form-group">
                                 <label for="alamat">Foto</label>
                                 <input type="file" class="form-control" name="foto" id="foto">
                             </div>

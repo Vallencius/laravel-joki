@@ -47,6 +47,11 @@
                             {{ $message }}
                             </div>
                         @enderror
+                        @error('angkatan')
+                            <div class="alert alert-danger">
+                            {{ $message }}
+                            </div>
+                        @enderror
                         @error('alamat')
                             <div class="alert alert-danger">
                             {{ $message }}
@@ -65,6 +70,7 @@
                                     <th>Jenis Kelamin</th>
                                     <th>Agama</th>
                                     <th>Alamat</th>
+                                    <th>Angkatan</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -78,6 +84,7 @@
                                     <th><a href="siswa/{{$siswa->id }}/profile">{{$siswa->jenis_kelamin}}</a></th>
                                     <th><a href="siswa/{{$siswa->id }}/profile">{{$siswa->agama}}</a></th>
                                     <th><a href="siswa/{{$siswa->id }}/profile">{{$siswa->alamat}}</a></th>
+                                    <th><a href="siswa/{{$siswa->id }}/profile">{{$siswa->angkatan}}</a></th>
                                     <th>
                                         <a href="/siswa/{{$siswa->id}}/edit" class="btn btn-warning btnsm">Edit</a>
                                         <a href="/siswa/{{$siswa->id}}/delete" class="btn btn-danger btnsm" onclick="return confirm('Apakah yakin ingin dihapus?')">Delete</a>
@@ -130,6 +137,10 @@
                                     <div class="form-group">
                                         <label for="agama">Agama</label>
                                         <input type="text" class="form-control" name="agama" id="agama" aria-describedby="nama_depan" placeholder="Agama">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="angkatan">Angkatan</label>
+                                        <input type="text" class="form-control" name="angkatan" id="angkatan" aria-describedby="nama_depan" placeholder="Angkatan">
                                     </div>
                                     <div class="form-group">
                                         <label for="alamat">Alamat</label>

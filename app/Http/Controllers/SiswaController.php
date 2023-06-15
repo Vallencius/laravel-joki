@@ -26,6 +26,7 @@ class SiswaController extends Controller
             'jenis_kelamin' => 'required',
             'agama' => 'required',
             'alamat' => 'required',
+            'angkatan' => 'required',
         ]);
         $check = Siswa::create($data);
         if (!$check) {
@@ -51,6 +52,7 @@ class SiswaController extends Controller
             'jenis_kelamin' => 'required',
             'agama' => 'required',
             'alamat' => 'required',
+            'angkatan' => 'required',
         ]));
         if ($request->hasFile('foto')) {
             $fotoreq = rand() . $request->file('foto')->getClientOriginalName();
@@ -97,8 +99,14 @@ class SiswaController extends Controller
 
     }
     public function charts() {
-        $orders = Siswa::select("jenis_kelamin", DB::raw('count(*) as total'))
-                        ->groupBy('jenis_kelamin')->get();
-        return view('siswa.chart',['orders' => $orders, 'count' => 7]); 
+        $orders = Siswa::select("angkatan", DB::raw('count(*) as total'))
+                        ->groupBy('angkatan')->get();
+        $orderInArray = [];
+        $orderInArray[0] =["Angkatan", "Jumlah"];
+        $i = 1;
+        foreach($orders as $order){
+            $orderInArray[$i++] = [$order->angkatan, $order->total];
+        }
+        return view('siswa.chart',['orders' => $orderInArray, 'count' => count($orders)]); 
     }
 }

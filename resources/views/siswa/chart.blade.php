@@ -34,8 +34,9 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 <body>
+    <?php $i = 1; ?>
     <a href="/siswa" class="btn btn-info btn-lg">Back</a>
-    <h2 style="text-align: center;">Chart Jenis Kelamin Siswa</h2>
+    <h2 style="text-align: center;">Chart Jenis Angkatan</h2>
     <div class="container-fluid p-5">
         <div id="barchart_material" style="width: 100%; height: 500px;"></div>
     </div>
@@ -52,12 +53,8 @@
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-            ['Jenis Kelamin', 'Jumlah'],
-
-            ['{{ $orders[0]->jenis_kelamin }}', {{ $orders[0]->total }}],
-            ['{{ $orders[1]->jenis_kelamin }}', {{ $orders[1]->total }}],
-        ]);
+        var siswa = <?php echo json_encode($orders); ?>;
+        var data = google.visualization.arrayToDataTable(siswa);
 
         var options = {
           chart: {
